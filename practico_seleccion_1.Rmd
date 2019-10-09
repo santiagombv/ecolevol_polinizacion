@@ -1,0 +1,189 @@
+---
+title: "Selección natural y microevolución"
+output: html_document
+highlight: pygments
+---
+
+## Parte 1. Ejercicio Guiado.
+
+### Selección y respuesta a la selección
+La selección natural actúa sobre fenotipos, sin importar la base genética, y produce efectos fenotípicos inmediatos dentro de una generación. Por otra parte, la respuesta evolutiva a la selección involucra cambio genotípico de una generación a la siguiente y depende de la presencia de variación genética. La selección fenotípica se estima habitualmente a traves de la relación entre la adecuación (finess) relativa y uno o más rasgos de los organismos.
+
+### 1. Estimadores cuantitativos de la selección natural
+Existen diferentes índices para estimar la acción de la selección. La terminología utilizada puede ser confusa, en particular en los trabajos más antiguos. En este curso seguiremos la terminología de Brodie et al. 1995. En la siguiente tabla $w$ indica la adecuación relativa y $z$ es el valor estandarizado de un rasgo.   
+
+Parámetro | nombre | fórmula | interpretacion   
+---- | ------- | ---- | ----------------   
+$I$     | Oportunidad para la selección | $var(w)$ | Límite superior a la intensidad de la selección natural.     
+$S_i$   | Diferencial de selección lineal | $cov(w, z)$ | Cambio en la media de un rasgo.   
+$C_i$   | Diferencial de selección no lineal | $cov(w, z^2)$ | Cambio en la varianza de un rasgo.   
+$\beta_i$ | Gradiente de selección lineal | coeficiente de regresión parcial | Cambio en la media de un rasgo debida sólo a efectos directos de la selección.   
+$\gamma_{ii}$ | Gradiente de selección cuadrática | coeficiente de regresión parcial | Cambio en la varianza de un rasgo debida sólo a efectos directos de la selección.    
+$\gamma_{ij}$ | Gradiente de selección correlacional | coeficiente de regresión parcial | Cambio en la covarianza de dos rasgos debida sólo a efectos directos de la selección.   
+
+### 2. Ingreso y preparación de los datos
+#### Estandarización de los valores fenotípicos.
+Esto permitirá llevar los valores de los datos a una escala uniforme, con media cero y
+desvío estándar igual a la unidad. Permite comparar la intensidad de la selección, que
+será medida en unidades de desvío estándar. Para la estandarización utilizaremos la
+siguiente fórmula:
+$$z = (x−\bar{x}) / sd(x)$$
+Donde $z$ es el valor del rasgo estandarizado, $x$ es el valor original del rasgo, $\bar{x}$ es la
+media de $x$ y $sd(x)$ es su desvío estándar.   
+
+#### Relativización de la adecuación (fitness).
+Dividir el valor de la adecuación ($w$)por su media. Esta transformación sirve para estimar
+la contribución de cada fenotipo a la generación siguiente, en forma comparativa a
+otros fenotipos. También evita el efecto de los posibles cambios en el tamaño
+poblacional entre las generaciones. Es importante notar que la relativización otorga
+sentido a los valores de los gradientes y diferenciales de selección, por lo que no es
+posible realizar ninguna otra transformación en los valores de la adecuación.
+
+```{r cache=TRUE, eval=TRUE}
+dat <- read.table("cyclop.txt", header = TRUE)
+dat <- na.omit(dat)
+
+dat$wrel <- dat$pol.exp/mean(dat$pol.exp)
+
+dat$z1 <- (dat$flores - mean(dat$flores))/sd(dat$flores)
+dat$z2 <- (dat$nectario - mean(dat$nectario))/sd(dat$nectario)
+```
+
+### 3. Oportunidad para la selección.
+Este parámetro es poco usado en la literatura. Representa el límite superior de puede
+alcanzar la selección. Si no hay variabilidad en el éxito reproductivo no
+puede existir selección.   
+
+```{r eval=TRUE}
+I <- var(dat$wrel)
+I
+```
+
+### 4. Diferenciales de selección.
+#### Diferenciales de selección lineal.
+Podemos estimar la covarianza entre el rasgo y la adecuación utilizando una regresión
+lineal simple entre la adecuación relativizada y el rasgo estandarizado. En este caso el valor de la pendiente de la regresión equivale a la covarianza entre la adecuación y el rasgo.
+
+```{r eval=TRUE, results="hold"}
+s1 <-lm(wrel ~ z1, data = dat)
+summary(s1)
+
+s2 <-lm(wrel ~ z2, data = dat)
+summary(s2)
+```
+
+#### Diferenciales de selección cuadráticos
+Estos diferenciales se estiman como la covarianza entre los desvíos del rasgo elevados
+al cuadrado y la adecuación. En forma práctica también pueden obtenerse de una
+regresión lineal simple entre la adecuación relativa y el rasgo estandarizado elevado al
+cuadrado.   
+
+```{r, eval = TRUE, results = "hold"}
+c1 <- lm(wrel ~ I(z1^2), data = dat)
+summary(c1)
+
+c2 <- lm(wrel ~ I(z2^2), data = dat)
+summary(c2)
+```
+
+
+### 5. Gradientes de selección
+#### Gradientes de selección lineal
+Se estiman a partir de una regresión lineal múltiple entre los rasgos estandarizados y la
+adecuación relativizada.    
+
+$$w_i = \alpha + \beta_1 z_1 + \beta_2 z_2 + ... + \beta_i z_i + \epsilon_i$$   
+
+```{r, eval = TRUE, results = "hold", cache = TRUE}
+lin.grad <- lm(wrel ~ z1 + z2, data = dat)
+summary(lin.grad)
+```
+
+#### Gradientes de selección nolineal
+Se estiman a partir de una regresión cuadrática múltiple entre los rasgos estandarizados y la
+adecuación relativizada (ver fórmula para dos rasgos). Los términos lineales se introducen en la fórmula, pero no son utilizados.   
+
+$$w_i = \alpha + \beta_1 z_1 + \beta_2 z_2 + \gamma_{11} z_{1}^2 + \gamma_{22} z_{2}^2 + \gamma_{ij} z_1 z_2 + \epsilon_i$$   
+
+```{r, eval = T, cache=T, results="hold"}
+nonlin.grad <- lm(wrel ~ z1 + z2 + I((1/2)*z1^2) + I((1/2)*z2^2) + z1:z2, data = dat)
+summary(nonlin.grad)
+```
+
+### Extra 1: una función automatizada
+La función `grad` require un set de datos donde la adecuación relativizada ocupe la primera columna y las variables fenotípicas ocupen las restantes. Servirá también para estimar la significancia de los gradientes de selección mediante bootstrap.   
+
+```{r, eval = T, cache=T, results="hold"}
+grad <- function(data, original = c(1:nrow(data))){
+  data <- data[original, ]
+  vars <- colnames(data)[-1]
+  colnames(data)[1] <- "Wrel"
+  model.lin <- as.formula(paste("Wrel", paste(vars, collapse=" + "), sep=" ~ "))
+  m1 <- lm(formula = model.lin, data = data)
+  part1 <- paste("(", paste(vars, collapse=" + "), ")^2", sep = "")
+  part2 <- paste("I(0.5*(", vars, "^2))", sep = "", collapse = " + ")
+  model.qua <- as.formula <- paste("Wrel", paste(part1, part2, sep = " + "), sep = " ~ ")
+  m2 <- lm(formula = model.qua, data = data)
+  sel.grad<-c(m1$coefficients[-1], m2$coefficients[-c(1:ncol(data))])
+  return(sel.grad)
+}
+
+# nuevo set de datos
+dat2 <- data.frame(wrel = dat$wrel, z1 = dat$z1, z2 = dat$z2)
+
+selection.gradients <- grad(data = dat2)
+selection.gradients
+```
+
+### Extra 2. Obtener intervalos de confianza para los gradientes de selección mediante bootstrap.
+Los modelos de selección suelen mostrar habitualmente la violación de los supuestos de normalidad y homogeneidad de varianzas. Una de las maneras de resolver este problema es utilizando un bootstrap.
+
+```{r, eval = T, results="hold"}
+require(knitr)
+require(boot)
+
+boot.grad <- boot(data = dat2, statistic = grad, R = 999) # bootstrap
+
+CI <- list() # lista de intervalos de confianza para cada gradiente
+for(i in 1:length(boot.grad$t0)){
+CI[[i]] <- boot.ci(boot.grad, conf = 0.95, type = "bca", index = i)$bca[4:5]
+}
+names(CI) <- names(boot.grad$t0)
+CI <- do.call(rbind, CI)
+colnames(CI) <-c("lower.ci", "upper.ci")
+kable(CI, digits = 3)
+```
+
+### Gráfico de los resultados
+Graficamos los resultados de la ecuación de Lande y Arnold.
+
+```{r}
+plot(wrel ~ z1, data = dat, pch = 19, cex = 1.5, col = "gray70")
+
+new.z1 <- seq(min(dat$z1), max(dat$z1), length = 500)
+pred.z1 <- predict(nonlin.grad, newdata = data.frame(z1 = new.z1, z2 = mean(dat$z2)), se.fit = T)
+lines(new.z1, pred.z1$fit, lwd = 2, col = "blue")
+lines(new.z1, pred.z1$fit + pred.z1$se.fit, lwd = 2, lty = 3, col = "blue")
+lines(new.z1, pred.z1$fit - pred.z1$se.fit, lwd = 2, lty = 3, col = "blue")
+```
+
+```{r}
+plot(wrel ~ z2, data = dat, pch = 19, cex = 1.5, col = "gray70")
+
+new.z2 <- seq(min(dat$z2), max(dat$z2), length = 500)
+pred.z2 <- predict(nonlin.grad, newdata = data.frame(z1 = mean(dat$z1), z2 = new.z2), se.fit = T)
+lines(new.z2, pred.z2$fit, lwd = 2, col = "blue")
+lines(new.z2, pred.z2$fit + pred.z2$se.fit, lwd = 2, lty = 3, col = "blue")
+lines(new.z2, pred.z2$fit - pred.z2$se.fit, lwd = 2, lty = 3, col = "blue")
+```
+
+```{r}
+new.z1 <- seq(min(dat$z1), max(dat$z1), length = 100)
+new.z2 <- seq(min(dat$z2), max(dat$z2), length = 100)
+X <- expand.grid(z1 = new.z1, z2 = new.z2)
+pred.w <- matrix(predict(nonlin.grad, newdata = X), 100, 100)
+image(new.z1, new.z2, pred.w)
+```
+
+
+### END
