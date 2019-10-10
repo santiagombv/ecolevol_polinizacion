@@ -1,10 +1,14 @@
 ## Ecología y Evolución de las Interacciones Planta - Polinizador
 
-![](picaflor.JPG)
+![](mariposa.JPG)
 
 ### Del 14 al 18 de octubre de 2019. Sucre, Bolivia.
 
-### Para este curso se requiere la instalación de los softwares [ImageJ](https://imagej.nih.gov/ij/index.html), [R](https://cran.r-project.org/) y [Rstudio](https://rstudio.com/), en sus últimas versiones disponibles, y de los siguientes paquetes de R: *ape*, *devtools*, *geiger* y *phytools*.
+### Para este curso se requiere la instalación de los siguientes softwares en sus últimas versiones disponibles:   
+[ImageJ](https://imagej.nih.gov/ij/index.html)   
+[R](https://cran.r-project.org/)   
+[Rstudio](https://rstudio.com/)   
+Paquetes de R: *ape*, *devtools*, *geiger* y *phytools*.   
 
 ### Links a las clases teóricas
 [Estrategias Reproductivas en Plantas](https://santiagombv.github.io/ecolevol_polinizacion/teor_estrategias_plantas.html)   
