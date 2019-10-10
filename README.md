@@ -4,7 +4,7 @@
 
 #### **Del 14 al 18 de octubre de 2019.** Universidad Mayor, Real y Pontificia de San Francisco Xavier de Chuquisaca, **Sucre, Bolivia**.
 
-#### Profersores
+#### Profesores   
 * Dr. Santiago Benitez-Vieyra. Laboratorio Ecología Evolutiva y Biología Floral – IMBIV (Universidad nacional de Córdoba - CONICET), Argentina.   
 * Dr. Federico Sazatornil. Laboratorio Ecología Evolutiva y Biología Floral – IMBIV (Universidad nacional de Córdoba - CONICET), Argentina.   
 * Dr. Carlos F. Pinto – Laboratorio de Ecología Química - USFX.   
@@ -26,3 +26,5 @@ Paquetes de R: *ape*, *devtools*, *geiger* y *phytools*.
 
 #### Descarga de todo el material práctico [aquí](https://github.com/santiagombv/ecolevol_polinizacion/archive/master.zip)
 
+#### Organizan   
+Laboratorio de Ecología Química – USFX, Centro de Estudios de Postgrado e Investigación - USFX, Facultad de Ciencias y Tecnología - USFX, Facultad de Ciencias Químico Farmaceúticas y Bioquímicas - USFX.   
