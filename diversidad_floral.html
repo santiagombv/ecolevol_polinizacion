@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Sazatornil Federico" />
+  <title>Diversidad Floral</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="diversidad_floral_files/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+
+<link rel="stylesheet" href="diversidad_floral_files/reveal.js-3.3.0.1/css/theme/serif.css" id="theme">
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+	/* SECTION 1: Set default width, margin, float, and
+	   background. This prevents elements from extending
+	   beyond the edge of the printed page, and prevents
+	   unnecessary background images from printing */
+	html {
+		background: #fff;
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+	body {
+		background: #fff;
+		font-size: 20pt;
+		width: auto;
+		height: auto;
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		overflow: visible;
+		float: none !important;
+	}
+
+	/* SECTION 2: Remove any elements not needed in print.
+	   This would include navigation, ads, sidebars, etc. */
+	.nestedarrow,
+	.controls,
+	.fork-reveal,
+	.share-reveal,
+	.state-background,
+	.reveal .progress,
+	.reveal .backgrounds {
+		display: none !important;
+	}
+
+	/* SECTION 3: Set body font face, size, and color.
+	   Consider using a serif font for readability. */
+	body, p, td, li, div {
+		font-size: 20pt!important;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		color: #000;
+	}
+
+	/* SECTION 4: Set heading font face, sizes, and color.
+	   Differentiate your headings from your body text.
+	   Perhaps use a large sans-serif for distinction. */
+	h1,h2,h3,h4,h5,h6 {
+		color: #000!important;
+		height: auto;
+		line-height: normal;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		text-shadow: 0 0 0 #000 !important;
+		text-align: left;
+		letter-spacing: normal;
+	}
+	/* Need to reduce the size of the fonts for printing */
+	h1 { font-size: 28pt !important;  }
+	h2 { font-size: 24pt !important; }
+	h3 { font-size: 22pt !important; }
+	h4 { font-size: 22pt !important; font-variant: small-caps; }
+	h5 { font-size: 21pt !important; }
+	h6 { font-size: 20pt !important; font-style: italic; }
+
+	/* SECTION 5: Make hyperlinks more usable.
+	   Ensure links are underlined, and consider appending
+	   the URL to the end of the link for usability. */
+	a:link,
+	a:visited {
+		color: #000 !important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	/*
+	.reveal a:link:after,
+	.reveal a:visited:after {
+		content: " (" attr(href) ") ";
+		color: #222 !important;
+		font-size: 90%;
+	}
+	*/
+
+
+	/* SECTION 6: more reveal.js specific additions by @skypanther */
+	ul, ol, div, p {
+		visibility: visible;
+		position: static;
+		width: auto;
+		height: auto;
+		display: block;
+		overflow: visible;
+		margin: 0;
+		text-align: left !important;
+	}
+	.reveal pre,
+	.reveal table {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.reveal pre code {
+		padding: 20px;
+		border: 1px solid #ddd;
+	}
+	.reveal blockquote {
+		margin: 20px 0;
+	}
+	.reveal .slides {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+		zoom: 1 !important;
+
+		overflow: visible !important;
+		display: block !important;
+
+		text-align: left !important;
+		-webkit-perspective: none;
+		   -moz-perspective: none;
+		    -ms-perspective: none;
+		        perspective: none;
+
+		-webkit-perspective-origin: 50% 50%;
+		   -moz-perspective-origin: 50% 50%;
+		    -ms-perspective-origin: 50% 50%;
+		        perspective-origin: 50% 50%;
+	}
+	.reveal .slides section {
+		visibility: visible !important;
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		display: block !important;
+		overflow: visible !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 60px 20px !important;
+		z-index: auto !important;
+
+		opacity: 1 !important;
+
+		page-break-after: always !important;
+
+		-webkit-transform-style: flat !important;
+		   -moz-transform-style: flat !important;
+		    -ms-transform-style: flat !important;
+		        transform-style: flat !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		    -ms-transition: none !important;
+		        transition: none !important;
+	}
+	.reveal .slides section.stack {
+		padding: 0 !important;
+	}
+	.reveal section:last-of-type {
+		page-break-after: avoid !important;
+	}
+	.reveal section .fragment {
+		opacity: 1 !important;
+		visibility: visible !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+	}
+	.reveal section img {
+		display: block;
+		margin: 15px 0px;
+		background: rgba(255,255,255,1);
+		border: 1px solid #666;
+		box-shadow: none;
+	}
+
+	.reveal section small {
+		font-size: 0.8em;
+	}
+
+}  
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+    
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	margin: 0 auto !important;
+	border: 0;
+	padding: 0;
+	float: none !important;
+	overflow: visible;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+	display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+	overflow: hidden !important;
+	font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+	visibility: visible;
+	position: static;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: visible;
+	margin: auto;
+}
+.reveal {
+	width: auto !important;
+	height: auto !important;
+	overflow: hidden !important;
+}
+.reveal .slides {
+	position: static;
+	width: 100%;
+	height: auto;
+
+	left: auto;
+	top: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	overflow: visible;
+	display: block;
+
+	-webkit-perspective: none;
+	   -moz-perspective: none;
+	    -ms-perspective: none;
+	        perspective: none;
+
+	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+	   -moz-perspective-origin: 50% 50%;
+	    -ms-perspective-origin: 50% 50%;
+	        perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+	page-break-after: always !important;
+
+	visibility: visible !important;
+	position: relative !important;
+	display: block !important;
+	position: relative !important;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+	min-height: 1px;
+
+	opacity: 1 !important;
+
+	-webkit-transform-style: flat !important;
+	   -moz-transform-style: flat !important;
+	    -ms-transform-style: flat !important;
+	        transform-style: flat !important;
+
+	-webkit-transform: none !important;
+	   -moz-transform: none !important;
+	    -ms-transform: none !important;
+	        transform: none !important;
+}
+
+.reveal section.stack {
+	margin: 0 !important;
+	padding: 0 !important;
+	page-break-after: avoid !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.reveal img {
+	box-shadow: none;
+}
+
+.reveal .roll {
+	overflow: visible;
+	line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+	display: block;
+	width: 100%;
+	max-height: none;
+	left: auto;
+	top: auto;
+	z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+	display: block;
+	position: absolute;
+	font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">Diversidad Floral</h1>
+    <h2 class="author">Sazatornil Federico</h2>
+    <h3 class="date">Ecología y Evolución de las Interacciones Planta-polinizador</h3>
+</section>
+
+<section id="polinización" class="slide level2" data-background="images/polinizacion.png">
+<h2>Polinización</h2>
+</section>
+<section id="diversidad-de-angiospermas" class="slide level2" data-background="images/diversidadfloral4.png">
+<h2><small>Diversidad de Angiospermas </small></h2>
+</section>
+<section id="section" class="slide level2" data-background="images/diversidadfloral2.png">
+<h2></h2>
+</section>
+<section id="por-qué-estudiar-polinización" class="slide level2" data-background="images/diversidadfloral2_clarita.png">
+<h2>¿Por qué estudiar Polinización?</h2>
+<ol type="1">
+<li class="fragment">300000 especies de Angiospermas, aproximadamente<br />
+</li>
+<li class="fragment">90% de las especies polinizadas por animales<br />
+</li>
+<li class="fragment">30% de los cultivos requieren de polinización por animales.</li>
+<li class="fragment">La polinización por animales (polinización biótica) es más común (Renner 1998) y generalmente más efectiva que los modos alternativos de movimientos de polen abióticos que usan viento o agua, y la polinización animal también se asocia con una especiación más rápida de las plantas.</li>
+<li class="fragment">Importancia en la estabilidad de los ecosistemas.</li>
+</ol>
+</section>
+<section id="por-qué-estudiar-polinización-1" class="slide level2" data-background="images/diversidadfloral2_clarita.png">
+<h2>¿Por qué estudiar Polinización?</h2>
+<ol start="5" type="1">
+<li class="fragment">Es quizás más susceptible que cualquier otra área para proporcionar ideas sobre el equilibrio y la interacción de los efectos ecológicos y evolutivos (Mitchell et al. 2009).<br />
+</li>
+<li class="fragment">Las flores son estructuras complejas, y su complejidad revela admirablemente las acciones, tanto históricas como contemporáneas, de los agentes selectivos (principalmente, pero no únicamente, los polinizadores) que sabemos que las han moldeado. Estos factores hacen de la biología floral un recurso ideal para comprender la adaptación biológica a todos los niveles, en contraste con muchos otros sistemas, donde existen agentes selectivos múltiples y a menudo inciertos.</li>
+<li class="fragment">Los estudios que se ocupan exclusivamente de la biología de la polinización a menudo han tenido un gran impacto en la teoría ecológica y evolutiva general.</li>
+</ol>
+</section>
+<section id="por-qué-estudiar-polinización-2" class="slide level2" data-background="images/diversidadfloral2_clarita.png">
+<h2>¿Por qué estudiar Polinización?</h2>
+<p><small> Las interacciones de polinización a menudo nos muestran la evolución por selección natural en acción casi ante nuestros ojos y proporcionan algunos ejemplos muy claros de radiación adaptativa y, tal vez, de especiación de plantas. Son particularmente útiles para estudiar las adaptaciones (coevolución), porque dicha interacción a menudo involucra relativamente pocos organismos que interactúan con una interdependencia relativamente alta e incorporan los fenómenos más fundamentales (reproducción para la planta, suministro de alimentos para el animal). Existen presiones de selección en cada lado de la asociación, que ofrecen esperanzas de que los efectos en el nivel básico del flujo genético masculino y femenino puedan cuantificarse, a veces (especialmente en la polinización de cultivos) en una escala de tiempo que puede detectarse dentro del período de estudio de un científico </small></p>
+</section>
+<section id="section-1" class="slide level2" data-background="images/llegando.JPG">
+<h2></h2>
+</section>
+<section id="section-2" class="slide level2" data-background="images/topicos_flor.png">
+<h2></h2>
+</section>
+<section id="section-3" class="slide level2" data-background="images/topicos_ambos.png">
+<h2></h2>
+</section>
+<section id="section-4" class="slide level2" data-background="images/topicos_completo.png">
+<h2></h2>
+</section>
+<section id="section-5" class="slide level2" data-background="images/polinizando.png">
+<h2></h2>
+</section>
+<section id="ecología-evolutiva" class="slide level2" data-background="images/estudio_polinizacion1.png">
+<h2>Ecología Evolutiva</h2>
+</section>
+<section id="ecología-evolutiva-1" class="slide level2" data-background="images/estudio_polinizacion.png">
+<h2>Ecología Evolutiva</h2>
+</section>
+<section id="fenotipo-floral" class="slide level2" data-background="images/anatomia_flor.png">
+<h2>Fenotipo Floral</h2>
+</section>
+<section id="fenotipo-floral-1" class="slide level2">
+<h2>Fenotipo Floral</h2>
+<ul>
+<li class="fragment">Las flores son estructuras con múltiples funciones</li>
+<li class="fragment">Muchas veces se repite la misma estructura en un mismo individuo.</li>
+<li class="fragment">Se puede estudiar a diferentes escalas taxonómicas.</li>
+<li class="fragment">También las unidades de polinización: flores e inflorescencias</li>
+<li class="fragment">Las flores pueden variar en sus estructuras básicas (sepalos, petalos, androceo, gineceo), en su simetría, estructura de las inflorescencias, formas, arquitecturas, tamaños, sexualiad…</li>
+</ul>
+</section>
+<section id="section-6" class="slide level2" data-background="images/llegando.JPG">
+<h2></h2>
+</section>
+<section id="señales-florales" class="slide level2" data-background="images/señales.png">
+<h2><small>Señales Florales </small></h2>
+</section>
+<section id="recompensas-florales" class="slide level2" data-background="images/recompensas.png">
+<h2>Recompensas florales</h2>
+</section>
+<section id="néctar" class="slide level2" data-background="images/polinizando.png">
+<h2>Néctar</h2>
+</section>
+<section id="pólen" class="slide level2" data-background="images/polen.png">
+<h2>Pólen</h2>
+</section>
+<section id="aceites" class="slide level2" data-background="images/aceites.png">
+<h2>Aceites</h2>
+</section>
+<section id="section-7" class="slide level2" data-background="images/polinizando.png">
+<h2></h2>
+</section>
+<section id="arquitecturasformas-florales" class="slide level2" data-background="images/diversidadfloral2_clarita.png">
+<h2>Arquitecturas/formas florales</h2>
+</section>
+<section id="rotacea" class="slide level2" data-background="images/rotacea.png">
+<h2>Rotacea</h2>
+</section>
+<section id="penicilada" class="slide level2" data-background="images/penicilada.png">
+<h2>Penicilada</h2>
+</section>
+<section id="hipocrateriforme" class="slide level2" data-background="images/hipocrateriforme.png">
+<h2>Hipocrateriforme</h2>
+</section>
+<section id="infundibuliforme" class="slide level2" data-background="images/infundibuliforme.png">
+<h2>Infundibuliforme</h2>
+</section>
+<section id="bilabiada" class="slide level2" data-background="images/bilabiada.png">
+<h2>Bilabiada</h2>
+</section>
+<section id="papilionada" class="slide level2" data-background="images/papilionada.png">
+<h2>Papilionada</h2>
+</section>
+<section id="tubular" class="slide level2" data-background="images/tubular.png">
+<h2>Tubular</h2>
+</section>
+<section id="personada" class="slide level2" data-background="images/personada.png">
+<h2>Personada</h2>
+</section>
+<section id="section-8" class="slide level2" data-background="images/sindromes.png">
+<h2></h2>
+</section>
+<section id="síndromes-de-polinización-fenotipo-multivariado" class="slide level2">
+<h2>Síndromes de polinización: Fenotipo Multivariado</h2>
+<ul>
+<li class="fragment">¿Por qué flores de clados muy diferentes tienen morfologías convergentes? ¿Cómo se explican las convergencias en el fenotipo floral? Polinizadores similares ejercen presiones selectivas similares.</li>
+<li class="fragment">Casi todos los trabajos anteriores sobre polinización se organizaron en torno a este tema de los síndromes, y sirvió como una estructura útil para comprender las interacciones entre los animales y las flores durante casi dos siglos. Utilidad didáctica y conceptual.</li>
+<li class="fragment">Especialismo vs generalismo en síndromes.</li>
+</ul>
+</section>
+<section id="síndromes-de-polinización" class="slide level2" data-background="images/tabla_sindromes.png">
+<h2>Síndromes de polinización</h2>
+</section>
+<section id="fin" class="slide level2">
+<h2>fin</h2>
+</section>
+    </div>
+  </div>
+
+  <script src="diversidad_floral_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="diversidad_floral_files/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        // Transition style
+        transition: 'concave', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+
+
+
+        // Optional reveal.js plugins
+        dependencies: [
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>
