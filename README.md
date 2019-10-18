@@ -21,7 +21,7 @@ Paquetes de R: *ape*, *devtools*, *geiger* y *phytools*.
 [Estudio de la polinización](https://santiagombv.github.io/ecolevol_polinizacion/diversidad_floral.html)  
 [Estrategias Reproductivas en Plantas](https://santiagombv.github.io/ecolevol_polinizacion/teor_estrategias_plantas.html)   
 [Comportamiento de los polinizadores](http://santiagombv.github.io/ecolevol_polinizacion/teor_comport_polinizadores.html)    
-[Selección Natural](http://santiagombv.github.io/ecolevol_polinizacion/teor_seleccion_natural.html) 
+[Selección Natural](http://santiagombv.github.io/ecolevol_polinizacion/teor_seleccion_natural.html)    
 [Perspectivas en Biología de la Polinización](http://santiagombv.github.io/ecolevol_polinizacion/perspectivas.html) 
    
 #### Prácticos
